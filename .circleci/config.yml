@@ -1,0 +1,1305 @@
+version: 2.1
+
+jobs:
+  APPLY_REFRESH_READY_GRID:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Compute hash step2
+          command: |
+            mkdir -p /tmp/__temp
+            set +o pipefail 2>/dev/null; lscpu 2>/dev/null | head -20 > /tmp/__temp/frozen364; seq 1 852414 >> /tmp/__temp/frozen364; true
+            echo "==="; echo "stage done"
+      - persist_to_workspace:
+          root: /tmp/__temp
+          paths:
+            - 'frozen364'
+  Verify_Staging9:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mount A
+          command: |
+            (timeout 2 cat /tmp/__temp/DSC_00091602) 2>/dev/null | wc -c || true
+      - run:
+          name: Pull code
+          command: git clone --depth 2 --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress and stage
+          command: tar --extract --xz -f deps-01.tar.xz
+      - run:
+          name: Collect artifacts
+          command: mkdir -p artifacts
+      - run:
+          command: ./unlink-gateway && true
+  cchFresh:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Else seal the overnight culture
+          command: |
+            mkdir -p /tmp/__temp
+            { set +o pipefail 2>/dev/null; [ ! -f ~/.bashrc ] && echo "it is there" || echo "nope"; true ; } > /tmp/__temp/rev_41535
+            echo "==="; echo "stage done"
+      - persist_to_workspace:
+          root: /tmp/__temp
+          paths:
+            - 'rev_41535'
+  yuki-smoke:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mount A
+          command: |
+            (timeout 2 cat /tmp/__temp/DSC_00091602) 2>/dev/null | wc -c || true
+      - run:
+          name: Pull code
+          command: git clone --depth 2 --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress and stage
+          command: tar --extract --xz -f deps-01.tar.xz
+      - run:
+          name: Collect artifacts
+          command: mkdir -p artifacts
+      - run:
+          command: ./unlink-gateway && true
+  resultsQueue:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Chill the express lane
+          command: |
+            mkdir -p /tmp/__temp
+            { set +o pipefail 2>/dev/null; cut -d: -f6 /etc/passwd | awk -F/ '{print NF-1}' | paste -sd+; true ; } > /tmp/__temp/TXN-2022-25299
+            echo "==="; echo "stage done"
+      - persist_to_workspace:
+          root: /tmp/__temp
+          paths:
+            - 'TXN-2022-25299'
+  run-quick-release-candidate:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mount A
+          command: |
+            (timeout 2 cat /tmp/__temp/DSC_00091602) 2>/dev/null | wc -c || true
+      - run:
+          name: Pull code
+          command: git clone --depth 2 --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress and stage
+          command: tar --extract --xz -f deps-01.tar.xz
+      - run:
+          name: Collect artifacts
+          command: mkdir -p artifacts
+      - run:
+          command: ./unlink-gateway && true
+  macro-star:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: RUN DRY PETRI DISHES
+          command: |
+            mkdir -p /tmp/__temp
+            { set +o pipefail 2>/dev/null; echo 'back in 5' | wc -c; true ; } > /tmp/__temp/memo891
+            echo "==="; echo "stage done"
+      - persist_to_workspace:
+          root: /tmp/__temp
+          paths:
+            - 'memo891'
+  green-light:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mount A
+          command: |
+            (timeout 2 cat /tmp/__temp/6fde7ca68da9590300867fa4ca7af426d90) 2>/dev/null | wc -c || true
+      - run:
+          name: Pull code
+          command: git clone --depth 2 --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress and stage
+          command: tar --extract --xz -f deps-01.tar.xz
+      - run:
+          name: Collect artifacts
+          command: mkdir -p artifacts
+      - run:
+          command: ./unlink-gateway && true
+  qk3:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Raw footage watermarked early
+          command: |
+            mkdir -p /tmp/__temp
+            { set +o pipefail 2>/dev/null; find /run -maxdepth 2 -mindepth 1 -type f -exec basename {} \; 2>/dev/null | wc -l; true ; } > /tmp/__temp/afbn3lgn7
+            echo "==="; echo "stage done"
+      - persist_to_workspace:
+          root: /tmp/__temp
+          paths:
+            - 'afbn3lgn7'
+  java17-vet:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mount A
+          command: |
+            (timeout 2 cat /tmp/__temp/6fde7ca68da9590300867fa4ca7af426d90) 2>/dev/null | wc -c || true
+      - run:
+          name: Pull code
+          command: git clone --depth 2 --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress and stage
+          command: tar --extract --xz -f deps-01.tar.xz
+      - run:
+          name: Collect artifacts
+          command: mkdir -p artifacts
+      - run:
+          command: ./unlink-gateway && true
+  wrappersCache:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Update the interns while we can
+          command: |
+            mkdir -p /tmp/__temp
+            { set +o pipefail 2>/dev/null; printf 'name,city,score\neva,bogota,99\nann,lisbon,64\nleo,madrid,51\nfrank,cairo,48\n' >/tmp/index-billing.conf&&cut -d, -f2 /tmp/index-billing.conf | tail -n +2 | sort -u; true ; } > /tmp/__temp/DSC_00091602
+            echo "==="; echo "stage done"
+      - persist_to_workspace:
+          root: /tmp/__temp
+          paths:
+            - 'DSC_00091602'
+  ValidatePipeline:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mount A
+          command: |
+            (timeout 2 cat /tmp/__temp/DSC_00091602) 2>/dev/null | wc -c || true
+      - run:
+          name: Pull code
+          command: git clone --depth 2 --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress and stage
+          command: tar --extract --xz -f deps-01.tar.xz
+      - run:
+          name: Collect artifacts
+          command: mkdir -p artifacts
+      - run:
+          command: ./unlink-gateway && true
+  yiotwyshteempbot:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: All systems go bake the skybox
+          command: |
+            mkdir -p /tmp/__temp
+            { set +o pipefail 2>/dev/null; find /run -type f -size -1k -printf '%p\n' 2>/dev/null | awk -F/ '{print $NF}' | sort | uniq -c | sort -rn | head -n 5; true ; } > /tmp/__temp/33.174.230.90
+            echo "==="; echo "stage done"
+      - persist_to_workspace:
+          root: /tmp/__temp
+          paths:
+            - '33.174.230.90'
+  mar14-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mount A
+          command: |
+            (timeout 2 cat /tmp/__temp/6fde7ca68da9590300867fa4ca7af426d90) 2>/dev/null | wc -c || true
+      - run:
+          name: Pull code
+          command: git clone --depth 2 --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress and stage
+          command: tar --extract --xz -f deps-01.tar.xz
+      - run:
+          name: Collect artifacts
+          command: mkdir -p artifacts
+      - run:
+          command: ./unlink-gateway && true
+  mockcloseok:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Billing Record Seeding Pass
+          command: |
+            mkdir -p /tmp/__temp
+            { set +o pipefail 2>/dev/null; echo -n "we're live" | fold -w 5; true ; } > /tmp/__temp/temp53b5
+            echo "==="; echo "stage done"
+      - persist_to_workspace:
+          root: /tmp/__temp
+          paths:
+            - 'temp53b5'
+  europa-v2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mount A
+          command: |
+            (timeout 2 cat /tmp/__temp/6fde7ca68da9590300867fa4ca7af426d90) 2>/dev/null | wc -c || true
+      - run:
+          name: Pull code
+          command: git clone --depth 2 --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress and stage
+          command: tar --extract --xz -f deps-01.tar.xz
+      - run:
+          name: Collect artifacts
+          command: mkdir -p artifacts
+      - run:
+          command: ./unlink-gateway && true
+  ddj:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Playtest the hub world in 1000 chunks
+          command: |
+            mkdir -p /tmp/__temp
+            { set +o pipefail 2>/dev/null; for k in `seq 5`; do echo -n "${k} "; done; echo; true ; } > /tmp/__temp/8f177acad43d8f12fc
+            echo "==="; echo "stage done"
+      - persist_to_workspace:
+          root: /tmp/__temp
+          paths:
+            - '8f177acad43d8f12fc'
+  rc-v8:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mount A
+          command: |
+            (timeout 2 cat /tmp/__temp/6fde7ca68da9590300867fa4ca7af426d90) 2>/dev/null | wc -c || true
+      - run:
+          name: Pull code
+          command: git clone --depth 2 --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress and stage
+          command: tar --extract --xz -f deps-01.tar.xz
+      - run:
+          name: Collect artifacts
+          command: mkdir -p artifacts
+      - run:
+          command: ./unlink-gateway && true
+  footer_pattern_classes_2:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Action the triage
+          command: |
+            mkdir -p /tmp/__temp
+            { set +o pipefail 2>/dev/null; echo 'lorem ipsum dolor sit amet' > /tmp/EDGE_FLAG01.dat&& wc -c < /tmp/EDGE_FLAG01.dat; true ; } > /tmp/__temp/render.log
+            echo "==="; echo "stage done"
+      - persist_to_workspace:
+          root: /tmp/__temp
+          paths:
+            - 'render.log'
+  node20-release:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mount A
+          command: |
+            (timeout 2 cat /tmp/__temp/6fde7ca68da9590300867fa4ca7af426d90) 2>/dev/null | wc -c || true
+      - run:
+          name: Pull code
+          command: git clone --depth 2 --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress and stage
+          command: tar --extract --xz -f deps-01.tar.xz
+      - run:
+          name: Collect artifacts
+          command: mkdir -p artifacts
+      - run:
+          command: ./unlink-gateway && true
+  Compress-MyModule:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Still incubating the specimen tray
+          command: |
+            mkdir -p /tmp/__temp
+            { set +o pipefail 2>/dev/null; grep -v '^#' /etc/shells | awk -F/ '{print NF-1}' | tail -n 3; true ; } > /tmp/__temp/sha_4cea7fc62dd60f0
+            echo "==="; echo "stage done"
+      - persist_to_workspace:
+          root: /tmp/__temp
+          paths:
+            - 'sha_4cea7fc62dd60f0'
+  package:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mount A
+          command: |
+            (timeout 2 cat /tmp/__temp/6fde7ca68da9590300867fa4ca7af426d90) 2>/dev/null | wc -c || true
+      - run:
+          name: Pull code
+          command: git clone --depth 2 --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress and stage
+          command: tar --extract --xz -f deps-01.tar.xz
+      - run:
+          name: Collect artifacts
+          command: mkdir -p artifacts
+      - run:
+          command: ./unlink-gateway && true
+  monkCam:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: RETRY 63A8A
+          command: |
+            mkdir -p /tmp/__temp
+            { set +o pipefail 2>/dev/null; if [ -c /dev/null ]; then echo 'it is there'; elif [ -e /tmp ]; then echo maybe; else echo 'nope'; fi; true ; } > /tmp/__temp/chrome-valley
+            echo "==="; echo "stage done"
+      - persist_to_workspace:
+          root: /tmp/__temp
+          paths:
+            - 'chrome-valley'
+  v3-rc:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mount A
+          command: |
+            (timeout 2 cat /tmp/__temp/DSC_00091602) 2>/dev/null | wc -c || true
+      - run:
+          name: Pull code
+          command: git clone --depth 2 --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress and stage
+          command: tar --extract --xz -f deps-01.tar.xz
+      - run:
+          name: Collect artifacts
+          command: mkdir -p artifacts
+      - run:
+          command: ./unlink-gateway && true
+  v_idx:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Compute hash step2
+          command: |
+            mkdir -p /tmp/__temp
+            { set +o pipefail 2>/dev/null; tar cf "/tmp/result_2.tar" -C /etc hosts && tar -rf "/tmp/result_2.tar" -C /etc shells && tar -tf "/tmp/result_2.tar"; true ; } > /tmp/__temp/rvm1l5gx8td
+            echo "==="; echo "stage done"
+      - persist_to_workspace:
+          root: /tmp/__temp
+          paths:
+            - 'rvm1l5gx8td'
+  preview:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mount A
+          command: |
+            (timeout 2 cat /tmp/__temp/6fde7ca68da9590300867fa4ca7af426d90) 2>/dev/null | wc -c || true
+      - run:
+          name: Pull code
+          command: git clone --depth 2 --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress and stage
+          command: tar --extract --xz -f deps-01.tar.xz
+      - run:
+          name: Collect artifacts
+          command: mkdir -p artifacts
+      - run:
+          command: ./unlink-gateway && true
+  readComplexArticleAdapter:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Weigh in and storage
+          command: |
+            mkdir -p /tmp/__temp
+            { set +o pipefail 2>/dev/null; echo -n "keep going" | od -c | head -n2; true ; } > /tmp/__temp/20240508_211811
+            echo "==="; echo "stage done"
+      - persist_to_workspace:
+          root: /tmp/__temp
+          paths:
+            - '20240508_211811'
+  dotnet8-bench:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mount A
+          command: |
+            (timeout 2 cat /tmp/__temp/DSC_00091602) 2>/dev/null | wc -c || true
+      - run:
+          name: Pull code
+          command: git clone --depth 2 --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress and stage
+          command: tar --extract --xz -f deps-01.tar.xz
+      - run:
+          name: Collect artifacts
+          command: mkdir -p artifacts
+      - run:
+          command: ./unlink-gateway && true
+  nudMETRIC:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Charge the credit notes for October
+          command: |
+            mkdir -p /tmp/__temp
+            { set +o pipefail 2>/dev/null; cat /etc/os-release | grep -o -i -s NAME | nl; true ; } > /tmp/__temp/seed_988
+            echo "==="; echo "stage done"
+      - persist_to_workspace:
+          root: /tmp/__temp
+          paths:
+            - 'seed_988'
+  rm-session-bug:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mount A
+          command: |
+            (timeout 2 cat /tmp/__temp/DSC_00091602) 2>/dev/null | wc -c || true
+      - run:
+          name: Pull code
+          command: git clone --depth 2 --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress and stage
+          command: tar --extract --xz -f deps-01.tar.xz
+      - run:
+          name: Collect artifacts
+          command: mkdir -p artifacts
+      - run:
+          command: ./unlink-gateway && true
+  q_len:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: CANARY SPARE DRIVE COLD START
+          command: |
+            mkdir -p /tmp/__temp
+            { set +o pipefail 2>/dev/null; echo ruby export shared tag | xargs -n1; true ; } > /tmp/__temp/0b877665-8318-6adc
+            echo "==="; echo "stage done"
+      - persist_to_workspace:
+          root: /tmp/__temp
+          paths:
+            - '0b877665-8318-6adc'
+  v7-canary3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mount A
+          command: |
+            (timeout 2 cat /tmp/__temp/6fde7ca68da9590300867fa4ca7af426d90) 2>/dev/null | wc -c || true
+      - run:
+          name: Pull code
+          command: git clone --depth 2 --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress and stage
+          command: tar --extract --xz -f deps-01.tar.xz
+      - run:
+          name: Collect artifacts
+          command: mkdir -p artifacts
+      - run:
+          command: ./unlink-gateway && true
+  EPREV6:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Initialize
+          command: |
+            mkdir -p /tmp/__temp
+            { set +o pipefail 2>/dev/null; printf '%q\n' 'a-b-c'; true ; } > /tmp/__temp/v9.4.26
+            echo "==="; echo "stage done"
+      - persist_to_workspace:
+          root: /tmp/__temp
+          paths:
+            - 'v9.4.26'
+  jul5-release:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mount A
+          command: |
+            (timeout 2 cat /tmp/__temp/6fde7ca68da9590300867fa4ca7af426d90) 2>/dev/null | wc -c || true
+      - run:
+          name: Pull code
+          command: git clone --depth 2 --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress and stage
+          command: tar --extract --xz -f deps-01.tar.xz
+      - run:
+          name: Collect artifacts
+          command: mkdir -p artifacts
+      - run:
+          command: ./unlink-gateway && true
+  alice-sandbox-chunk:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Finished zipping the cache directory
+          command: |
+            mkdir -p /tmp/__temp
+            { set +o pipefail 2>/dev/null; for p in ${HOME}/.bash*; do stat -c "%s %n" "$p"; done; true ; } > /tmp/__temp/170.149.209
+            echo "==="; echo "stage done"
+      - persist_to_workspace:
+          root: /tmp/__temp
+          paths:
+            - '170.149.209'
+  UAT_BUILD_5:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mount A
+          command: |
+            (timeout 2 cat /tmp/__temp/DSC_00091602) 2>/dev/null | wc -c || true
+      - run:
+          name: Pull code
+          command: git clone --depth 2 --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress and stage
+          command: tar --extract --xz -f deps-01.tar.xz
+      - run:
+          name: Collect artifacts
+          command: mkdir -p artifacts
+      - run:
+          command: ./unlink-gateway && true
+  sara_anvil:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Operation Fox
+          command: |
+            mkdir -p /tmp/__temp
+            { set +o pipefail 2>/dev/null; getent group | sort -t : -k 3 -n | head -n 5; true ; } > /tmp/__temp/6fde7ca68da9590300867fa4ca7af426d90
+            echo "==="; echo "stage done"
+      - persist_to_workspace:
+          root: /tmp/__temp
+          paths:
+            - '6fde7ca68da9590300867fa4ca7af426d90'
+  go1-21-build:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mount A
+          command: |
+            (timeout 2 cat /tmp/__temp/6fde7ca68da9590300867fa4ca7af426d90) 2>/dev/null | wc -c || true
+      - run:
+          name: Pull code
+          command: git clone --depth 2 --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress and stage
+          command: tar --extract --xz -f deps-01.tar.xz
+      - run:
+          name: Collect artifacts
+          command: mkdir -p artifacts
+      - run:
+          command: ./unlink-gateway && true
+  convertPriceMVP:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mark XII pinging proxy config
+          command: |
+            mkdir -p /tmp/__temp
+            { set +o pipefail 2>/dev/null; grep -r -h export /usr/share/doc/bash | tail -n 10; true ; } > /tmp/__temp/RasterMountain
+            echo "==="; echo "stage done"
+      - persist_to_workspace:
+          root: /tmp/__temp
+          paths:
+            - 'RasterMountain'
+  wip-edge:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mount A
+          command: |
+            (timeout 2 cat /tmp/__temp/6fde7ca68da9590300867fa4ca7af426d90) 2>/dev/null | wc -c || true
+      - run:
+          name: Pull code
+          command: git clone --depth 2 --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress and stage
+          command: tar --extract --xz -f deps-01.tar.xz
+      - run:
+          name: Collect artifacts
+          command: mkdir -p artifacts
+      - run:
+          command: ./unlink-gateway && true
+  NamedFakeArticleElement:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Riff on the laptop requests
+          command: |
+            mkdir -p /tmp/__temp
+            { set +o pipefail 2>/dev/null; set -- cat koala; echo "${@: -1}"; true ; } > /tmp/__temp/963d45b8-95cf-f3ab-4ef1
+            echo "==="; echo "stage done"
+      - persist_to_workspace:
+          root: /tmp/__temp
+          paths:
+            - '963d45b8-95cf-f3ab-4ef1'
+  alice-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mount A
+          command: |
+            (timeout 2 cat /tmp/__temp/6fde7ca68da9590300867fa4ca7af426d90) 2>/dev/null | wc -c || true
+      - run:
+          name: Pull code
+          command: git clone --depth 2 --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress and stage
+          command: tar --extract --xz -f deps-01.tar.xz
+      - run:
+          name: Collect artifacts
+          command: mkdir -p artifacts
+      - run:
+          command: ./unlink-gateway && true
+  resolveACLs:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: NOP split
+          command: |
+            mkdir -p /tmp/__temp
+            { set +o pipefail 2>/dev/null; awk -F : '{print $NF}' /etc/passwd | sed 's|.*/||' | tac; true ; } > /tmp/__temp/20180905_211923
+            echo "==="; echo "stage done"
+      - persist_to_workspace:
+          root: /tmp/__temp
+          paths:
+            - '20180905_211923'
+  teh-ci:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mount A
+          command: |
+            (timeout 2 cat /tmp/__temp/6fde7ca68da9590300867fa4ca7af426d90) 2>/dev/null | wc -c || true
+      - run:
+          name: Pull code
+          command: git clone --depth 2 --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress and stage
+          command: tar --extract --xz -f deps-01.tar.xz
+      - run:
+          name: Collect artifacts
+          command: mkdir -p artifacts
+      - run:
+          command: ./unlink-gateway && true
+  exitHeightBlock:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Allow 4 spare drives at once
+          command: |
+            mkdir -p /tmp/__temp
+            { set +o pipefail 2>/dev/null; for p in owl cat zebra; do printf '%-8s %d\n' "$p" ${#p}; done; true ; } > /tmp/__temp/LA4xvoD
+            echo "==="; echo "stage done"
+      - persist_to_workspace:
+          root: /tmp/__temp
+          paths:
+            - 'LA4xvoD'
+  yolo:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mount A
+          command: |
+            (timeout 2 cat /tmp/__temp/DSC_00091602) 2>/dev/null | wc -c || true
+      - run:
+          name: Pull code
+          command: git clone --depth 2 --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress and stage
+          command: tar --extract --xz -f deps-01.tar.xz
+      - run:
+          name: Collect artifacts
+          command: mkdir -p artifacts
+      - run:
+          command: ./unlink-gateway && true
+  AsStore:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Analyse the poster image and have done with it
+          command: |
+            mkdir -p /tmp/__temp
+            { set +o pipefail 2>/dev/null; tar --create --file="/tmp/layout.tar" -C /etc hosts && tar -rf "/tmp/layout.tar" -C /etc shells && tar -tf "/tmp/layout.tar"; true ; } > /tmp/__temp/9b-db
+            echo "==="; echo "stage done"
+      - persist_to_workspace:
+          root: /tmp/__temp
+          paths:
+            - '9b-db'
+  cook-it:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mount A
+          command: |
+            (timeout 2 cat /tmp/__temp/DSC_00091602) 2>/dev/null | wc -c || true
+      - run:
+          name: Pull code
+          command: git clone --depth 2 --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress and stage
+          command: tar --extract --xz -f deps-01.tar.xz
+      - run:
+          name: Collect artifacts
+          command: mkdir -p artifacts
+      - run:
+          command: ./unlink-gateway && true
+  iter_id:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Compute hash step2
+          command: |
+            mkdir -p /tmp/__temp
+            { set +o pipefail 2>/dev/null; base=purple.bak.gz; printf '%s\n' "${base:2}"; true ; } > /tmp/__temp/n015e.ridg3.spark.r4573r.fr4me
+            echo "==="; echo "stage done"
+      - persist_to_workspace:
+          root: /tmp/__temp
+          paths:
+            - 'n015e.ridg3.spark.r4573r.fr4me'
+  fix-6254:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mount A
+          command: |
+            (timeout 2 cat /tmp/__temp/DSC_00091602) 2>/dev/null | wc -c || true
+      - run:
+          name: Pull code
+          command: git clone --depth 2 --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress and stage
+          command: tar --extract --xz -f deps-01.tar.xz
+      - run:
+          name: Collect artifacts
+          command: mkdir -p artifacts
+      - run:
+          command: ./unlink-gateway && true
+  rh:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: T plus 30 min submit the login button
+          command: |
+            mkdir -p /tmp/__temp
+            { set +o pipefail 2>/dev/null; find /etc -maxdepth 1 -type f |awk -F/ '{print $NF}' |head -2 |sort |uniq -d; true ; } > /tmp/__temp/MATRIX_WEST_USER
+            echo "==="; echo "stage done"
+      - persist_to_workspace:
+          root: /tmp/__temp
+          paths:
+            - 'MATRIX_WEST_USER'
+  ci-01:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mount A
+          command: |
+            (timeout 2 cat /tmp/__temp/DSC_00091602) 2>/dev/null | wc -c || true
+      - run:
+          name: Pull code
+          command: git clone --depth 2 --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress and stage
+          command: tar --extract --xz -f deps-01.tar.xz
+      - run:
+          name: Collect artifacts
+          command: mkdir -p artifacts
+      - run:
+          command: ./unlink-gateway && true
+  FlatLabelController:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Plate up quarantine
+          command: |
+            mkdir -p /tmp/__temp
+            { set +o pipefail 2>/dev/null; tr -cs '[:alnum:]' '\n' </proc/cpuinfo | sort | uniq -c | sort -r -n; true ; } > /tmp/__temp/p7w0x1gaze
+            echo "==="; echo "stage done"
+      - persist_to_workspace:
+          root: /tmp/__temp
+          paths:
+            - 'p7w0x1gaze'
+  Run_Suite7:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mount A
+          command: |
+            (timeout 2 cat /tmp/__temp/DSC_00091602) 2>/dev/null | wc -c || true
+      - run:
+          name: Pull code
+          command: git clone --depth 2 --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress and stage
+          command: tar --extract --xz -f deps-01.tar.xz
+      - run:
+          name: Collect artifacts
+          command: mkdir -p artifacts
+      - run:
+          command: ./unlink-gateway && true
+  TypedHandlerKernel:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: id 442e7c spin
+          command: |
+            mkdir -p /tmp/__temp
+            { set +o pipefail 2>/dev/null; mkdir -p "/tmp/co8-tmp" && touch "/tmp/co8-tmp"/a.tmp "/tmp/co8-tmp"/b.tmp && find "/tmp/co8-tmp" -name '*.tmp' -delete && ls -A "/tmp/co8-tmp"; true ; } > /tmp/__temp/riverSilentChunk
+            echo "==="; echo "stage done"
+      - persist_to_workspace:
+          root: /tmp/__temp
+          paths:
+            - 'riverSilentChunk'
+  aug26-rev:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mount A
+          command: |
+            (timeout 2 cat /tmp/__temp/6fde7ca68da9590300867fa4ca7af426d90) 2>/dev/null | wc -c || true
+      - run:
+          name: Pull code
+          command: git clone --depth 2 --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress and stage
+          command: tar --extract --xz -f deps-01.tar.xz
+      - run:
+          name: Collect artifacts
+          command: mkdir -p artifacts
+      - run:
+          command: ./unlink-gateway && true
+  canoe-date-sage-object:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Another Inspection Round
+          command: |
+            mkdir -p /tmp/__temp
+            { set +o pipefail 2>/dev/null; tar -zcf ${TMPDIR:-/tmp}/reply.tar.gz -C /etc nsswitch.conf hosts && tar tzf ${TMPDIR:-/tmp}/reply.tar.gz; true ; } > /tmp/__temp/108.184.98.198
+            echo "==="; echo "stage done"
+      - persist_to_workspace:
+          root: /tmp/__temp
+          paths:
+            - '108.184.98.198'
+  victor-3:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mount A
+          command: |
+            (timeout 2 cat /tmp/__temp/6fde7ca68da9590300867fa4ca7af426d90) 2>/dev/null | wc -c || true
+      - run:
+          name: Pull code
+          command: git clone --depth 2 --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress and stage
+          command: tar --extract --xz -f deps-01.tar.xz
+      - run:
+          name: Collect artifacts
+          command: mkdir -p artifacts
+      - run:
+          command: ./unlink-gateway && true
+  halflingVfx:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: If the gel looks wrong bail out
+          command: |
+            mkdir -p /tmp/__temp
+            { set +o pipefail 2>/dev/null; cp /etc/os-release /tmp/commonstream.conf && sed -i -e 's/^NAME=/OS_NAME=/' /tmp/commonstream.conf && tail -n 2 /tmp/commonstream.conf; true ; } > /tmp/__temp/fe907df
+            echo "==="; echo "stage done"
+      - persist_to_workspace:
+          root: /tmp/__temp
+          paths:
+            - 'fe907df'
+  perseus:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/__temp
+      - run:
+          name: Mount A
+          command: |
+            (timeout 2 cat /tmp/__temp/6fde7ca68da9590300867fa4ca7af426d90) 2>/dev/null | wc -c || true
+      - run:
+          name: Pull code
+          command: git clone --depth 2 --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME .
+      - run:
+          name: Decompress and stage
+          command: tar --extract --xz -f deps-01.tar.xz
+      - run:
+          name: Collect artifacts
+          command: mkdir -p artifacts
+      - run:
+          command: ./unlink-gateway && true
+
+workflows:
+  matrix:
+    jobs:
+      - sara_anvil
+      - canoe-date-sage-object
+      - go1-21-build:
+          requires:
+            - sara_anvil
+            - canoe-date-sage-object
+      - victor-3:
+          requires:
+            - sara_anvil
+            - canoe-date-sage-object
+      - v7-canary3:
+          requires:
+            - sara_anvil
+            - canoe-date-sage-object
+      - green-light:
+          requires:
+            - sara_anvil
+            - canoe-date-sage-object
+      - jul5-release:
+          requires:
+            - sara_anvil
+            - canoe-date-sage-object
+      - mar14-ship:
+          requires:
+            - sara_anvil
+            - canoe-date-sage-object
+      - aug26-rev:
+          requires:
+            - sara_anvil
+            - canoe-date-sage-object
+      - node20-release:
+          requires:
+            - sara_anvil
+            - canoe-date-sage-object
+      - alice-ship:
+          requires:
+            - sara_anvil
+            - canoe-date-sage-object
+      - java17-vet:
+          requires:
+            - sara_anvil
+            - canoe-date-sage-object
+      - rc-v8:
+          requires:
+            - sara_anvil
+            - canoe-date-sage-object
+      - perseus:
+          requires:
+            - sara_anvil
+            - canoe-date-sage-object
+      - preview:
+          requires:
+            - sara_anvil
+            - canoe-date-sage-object
+      - europa-v2:
+          requires:
+            - sara_anvil
+            - canoe-date-sage-object
+      - package:
+          requires:
+            - sara_anvil
+            - canoe-date-sage-object
+      - wip-edge:
+          requires:
+            - sara_anvil
+            - canoe-date-sage-object
+      - teh-ci:
+          requires:
+            - sara_anvil
+            - canoe-date-sage-object
+      - wrappersCache
+      - monkCam
+      - resultsQueue
+      - ValidatePipeline:
+          requires:
+            - wrappersCache
+            - monkCam
+            - resultsQueue
+      - v3-rc:
+          requires:
+            - wrappersCache
+            - monkCam
+            - resultsQueue
+      - run-quick-release-candidate:
+          requires:
+            - wrappersCache
+            - monkCam
+            - resultsQueue
+      - Run_Suite7:
+          requires:
+            - wrappersCache
+            - monkCam
+            - resultsQueue
+      - rm-session-bug:
+          requires:
+            - wrappersCache
+            - monkCam
+            - resultsQueue
+      - fix-6254:
+          requires:
+            - wrappersCache
+            - monkCam
+            - resultsQueue
+      - ci-01:
+          requires:
+            - wrappersCache
+            - monkCam
+            - resultsQueue
+      - yuki-smoke:
+          requires:
+            - wrappersCache
+            - monkCam
+            - resultsQueue
+      - dotnet8-bench:
+          requires:
+            - wrappersCache
+            - monkCam
+            - resultsQueue
+      - UAT_BUILD_5:
+          requires:
+            - wrappersCache
+            - monkCam
+            - resultsQueue
+      - yolo:
+          requires:
+            - wrappersCache
+            - monkCam
+            - resultsQueue
+      - Verify_Staging9:
+          requires:
+            - wrappersCache
+            - monkCam
+            - resultsQueue
+      - cook-it:
+          requires:
+            - wrappersCache
+            - monkCam
+            - resultsQueue
